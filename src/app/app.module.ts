@@ -20,8 +20,9 @@ import { MatCardModule } from '@angular/material/card';
 import { FavoriteLocationComponent } from './favorite-location/favorite-location.component';
 import { RouterModule, Routes } from '@angular/router';
 import { AddToFavoritesComponent } from './weather-details/add-to-favorites/add-to-favorites.component';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from 'src/environments/environment';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { RoundTenPipe } from './weather-details/weather-details.pipe';
+
 
 const appRouts: Routes =[
   { path: '' ,component: WeatherDetailsComponent},
@@ -36,7 +37,8 @@ const appRouts: Routes =[
     HeaderComponent,
     WeatherDetailsComponent,
     FavoriteLocationComponent,
-    AddToFavoritesComponent
+    AddToFavoritesComponent,
+    RoundTenPipe
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,7 @@ const appRouts: Routes =[
       ),
     MatCardModule,
     RouterModule.forRoot(appRouts),
-
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

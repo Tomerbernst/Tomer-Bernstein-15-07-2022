@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, Subject, Subscription } from 'rxjs';
-import { filter, first, map, startWith, take } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, take } from 'rxjs/operators';
 import { CityWeather } from 'src/app/core/city-weather';
 import * as CityListAction from "../../autocomplete/autocomplete.action";
 import { AddToFavService } from './add-to-favorites.service';

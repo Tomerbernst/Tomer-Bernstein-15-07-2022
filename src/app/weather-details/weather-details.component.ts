@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { AutocompleteService } from '../autocomplete/autocomplete.service';
 import { CityWeather } from '../core/city-weather';
+import { HeaderService } from '../header/header.service';
 import { AddToFavService } from './add-to-favorites/add-to-favorites.service';
 
 @Component({
@@ -10,17 +11,20 @@ import { AddToFavService } from './add-to-favorites/add-to-favorites.service';
   templateUrl: './weather-details.component.html',
   styleUrls: ['./weather-details.component.scss']
 })
+
 export class WeatherDetailsComponent implements OnInit {
   cities: Observable<{ cities: CityWeather[], favArr:CityWeather[] }>;
+  isCels$ = new Subject<boolean>();
 
   constructor(
     private favService: AddToFavService,
+    private head: HeaderService,
     private cityList: AutocompleteService, 
     private store: Store<{ cityMap: { cities: CityWeather[], favArr:CityWeather[]} }> ) { }
 
   ngOnInit(): void {
-    console.log('weather');
     this.cities = this.store.select("cityMap");
+    this.isCels$ = this.head.isCels$;
   }
 
 
