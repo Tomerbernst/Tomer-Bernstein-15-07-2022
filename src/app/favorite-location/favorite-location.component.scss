@@ -1,0 +1,20 @@
+
+.weather-details-container{
+    width: 90vw;
+    margin:0 auto;
+    border: 2px solid black;
+    margin-top: 100px;
+
+}
+.weather-header{
+    margin-top: 20px;
+    display: flex;
+}
+
+.noFavMessage{
+    font-size: 30px;
+}
+
+.main-card{
+    cursor: pointer;
+}

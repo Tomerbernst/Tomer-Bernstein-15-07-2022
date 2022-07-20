@@ -1,0 +1,17 @@
+<app-header></app-header>
+<div class="weather-details-container">
+
+  <div *ngIf="(favArr | async).favArr.length < 1">
+    <h1 class="noFavMessage">There are no favorites cities</h1>
+  </div>
+
+    <div class="weather-header" *ngFor="let city of (favArr | async).favArr" >
+       <mat-card class="main-card" (click)="goBack(city.id,city.name)">
+         <mat-card-title-group>
+           <mat-card-title>{{city.name}}</mat-card-title>
+           <mat-card-subtitle>{{city.temperature}}</mat-card-subtitle>
+           <img class="card-img" src="https://www.accuweather.com/images/weathericons/{{city.weatherIcon}}.svg" height="80">
+         </mat-card-title-group>
+       </mat-card>     
+   </div> 
+</div>
