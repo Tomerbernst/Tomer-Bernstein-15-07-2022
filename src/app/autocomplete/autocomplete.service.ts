@@ -53,7 +53,7 @@ const baseUrl4='http://dataservice.accuweather.com/locations/v1/cities/geopositi
             id,
             name,
             res[0].WeatherIcon,
-            Math.round(res[0].Temperature.Metric.Value),
+            Math.round(res[0].Temperature.Imperial.Value),
             false
             )
           )

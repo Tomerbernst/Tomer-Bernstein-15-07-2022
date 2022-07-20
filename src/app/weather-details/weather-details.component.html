@@ -6,8 +6,8 @@
       <mat-card class="main-card" *ngIf="first">
         <mat-card-title-group>
           <mat-card-title>{{city.name}}</mat-card-title>
-          <mat-card-subtitle *ngIf="!(isCels$ | async)">{{city.temperature}}</mat-card-subtitle><!--celcius-->
-          <mat-card-subtitle *ngIf="isCels$ | async">{{(city.temperature * 9/5)+32 | round}}</mat-card-subtitle><!--farentheit-->
+          <mat-card-subtitle *ngIf="isCels$ | async">{{city.temperature}}</mat-card-subtitle><!--farentheit-->
+      <mat-card-subtitle *ngIf="!(isCels$ | async)" >{{((city.temperature - 32)*5)/9 | round}}</mat-card-subtitle><!--celcius-->
           <img class="card-img" src="https://www.accuweather.com/images/weathericons/{{city.weatherIcon}}.svg" height="80">
         </mat-card-title-group>
       </mat-card>
