@@ -1,32 +1,28 @@
 <mat-toolbar color="primary" class="menu">
     <span>Herolo Weather Task</span>
-    <span class="example-spacer"></span>
-
+    <span class="spacer"></span>
     <button class="menu-button" mat-icon-button (click)="goToMain()">
-        <mat-icon>home</mat-icon>
+       <mat-icon>home</mat-icon>
     </button>
     <button class="menu-button" mat-icon-button (click)="goToFav()">
-        <mat-icon>favorite</mat-icon>
+       <mat-icon>favorite</mat-icon>
     </button>
-    
     <section class="menu-button">
-        <mat-slide-toggle
-            class="example-margin"
-            [color]="color"
-            (change)="switch($event)"
-            [checked]="isDark" >
-            <h4 *ngIf="!isDark">Light</h4>
-            <h4 *ngIf="isDark">Dark</h4>
-        </mat-slide-toggle>
-      </section>
-      <section class="menu-button">
-        <mat-slide-toggle
-            class="example-margin"
-            [color]="color"
-            (change)="switchDegree($event)"
-            [checked]="isCels$ | async" >
-            <h4 *ngIf="!(isCels$ | async)">C°</h4>
-            <h4 *ngIf="isCels$ | async">F°</h4>
-        </mat-slide-toggle>
-      </section>
-</mat-toolbar>
+       <mat-slide-toggle
+       [color]="color"
+       (change)="switchLightMode($event)"
+       [checked]="isDark" >
+       <h4 *ngIf="!isDark">Light</h4>
+       <h4 *ngIf="isDark">Dark</h4>
+       </mat-slide-toggle>
+    </section>
+    <section class="menu-button">
+       <mat-slide-toggle
+       [color]="color"
+       (change)="switchDegreeFormat($event)"
+       [checked]="isCels$ | async" >
+       <h4 *ngIf="!(isCels$ | async)">C°</h4>
+       <h4 *ngIf="isCels$ | async">F°</h4>
+       </mat-slide-toggle>
+    </section>
+ </mat-toolbar>

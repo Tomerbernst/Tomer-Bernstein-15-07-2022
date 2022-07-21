@@ -1,12 +1,12 @@
 <div *ngIf="isInFavorite">
-<button mat-icon-button (click)="removefromFav()">
-    <mat-icon class="red-heart">favorite_border</mat-icon>
-</button>
+  <button mat-icon-button (click)="removefromFav()">
+     <mat-icon class="red-heart">favorite_border</mat-icon>
+  </button>
   <span class="fav-header">remove from favorites</span>
 </div>
 <div *ngIf="!isInFavorite">
   <button mat-icon-button (click)="addToFav()">
-      <mat-icon >favorite_border</mat-icon>
+     <mat-icon >favorite_border</mat-icon>
   </button>
-    <span class="fav-header">Add to favorites</span>
-  </div>
+  <span class="fav-header">Add to favorites</span>
+</div>

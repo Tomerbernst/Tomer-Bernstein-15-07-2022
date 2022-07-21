@@ -1,19 +1,19 @@
 <app-header></app-header>
 <div class="weather-details-container">
-
-  <div class="messageContainer" *ngIf="(favArr | async).favArr.length < 1">
-    <h1 class="noFavMessage">There are no favorites cities</h1>
-  </div>
-
-  <h1 class="noFavMessage" *ngIf="(favArr | async).favArr.length > 0">My Cities</h1>
-    <div class="weather-header" *ngFor="let city of (favArr | async).favArr" >
-       <mat-card class="main-card" (click)="goBack(city.id,city.name)">
+   <div class="messageContainer" *ngIf="(favCity | async).favCity.length < 1">
+      <h1 class="noFavMessage">No favorite cities selected</h1>
+   </div>
+   <h1 class="noFavMessage" *ngIf="(favCity | async).favCity.length > 0">My Cities</h1>
+   <div class="weather-header" *ngFor="let city of (favCity | async).favCity" >
+      <mat-card class="main-card" (click)="navToMainScreen(city.id,city.name)">
          <mat-card-title-group>
-           <mat-card-title>{{city.name}}</mat-card-title>
-           <mat-card-subtitle *ngIf="isCels$ | async">{{city.temperature}}</mat-card-subtitle><!--farentheit-->
-           <mat-card-subtitle *ngIf="!(isCels$ | async)" >{{((city.temperature - 32)*5)/9 | round}}</mat-card-subtitle><!--celcius-->
-           <img class="card-img" src="https://www.accuweather.com/images/weathericons/{{city.weatherIcon}}.svg" height="80">
+            <mat-card-title>{{city.name}}</mat-card-title>
+            <mat-card-subtitle *ngIf="isCels$ | async">{{city.temperature}}</mat-card-subtitle>
+            <!--farentheit-->
+            <mat-card-subtitle *ngIf="!(isCels$ | async)" >{{((city.temperature - 32)*5)/9 | round}}</mat-card-subtitle>
+            <!--celcius-->
+            <img class="card-img" src="https://www.accuweather.com/images/weathericons/{{city.weatherIcon}}.svg" height="80">
          </mat-card-title-group>
-       </mat-card>     
-   </div> 
+      </mat-card>
+   </div>
 </div>

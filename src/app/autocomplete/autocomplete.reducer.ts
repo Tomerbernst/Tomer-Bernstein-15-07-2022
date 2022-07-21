@@ -4,62 +4,56 @@ import { CityWeather } from "../core/city-weather";
 
 const initialState = {
   cities: [],
-  favArr:[],
+  favCity: [],
 };
 
 export function autocompleteReducer(
   state = initialState,
   action: CityListAction.CityListAction
 ) {
-  console.log(action.type);
-
   switch (action.type) {
     case CityListAction.ADD_CITY:
-
-      if(state.cities.length < 6 ){
-        return  {
+      if (state.cities.length < 6) {
+        return {
           ...state,
-          cities: [...state.cities, action.payload]
-        };  
+          cities: [...state.cities, action.payload],
+        };
       } else {
         return {
           ...state,
-          cities: [action.payload]
-          };
+          cities: [action.payload],
+        };
       }
 
-
-      case CityListAction.ADD_CARD:
-        console.log('hello');
-        let isExist: Boolean;
-        isExist = state.favArr.some(p=> p.id == action.payload.id );
-        console.log({
-          ...state,
-          favArr: [...state.favArr, action.payload]
-        });
-        
-        if (!isExist)
-        return {
+    case CityListAction.ADD_CARD:
+      let isExist: Boolean;
+      isExist = state.favCity.some((p) => p.id == action.payload.id);
+      console.log({
         ...state,
-        favArr: [...state.favArr, action.payload]
-      }; else
-          return state;
+        favCity: [...state.favCity, action.payload],
+      });
 
-      
-      case CityListAction.DELETE_CARD:   
-        let lastState = state.favArr.filter((city) => {
-          return !(city.id == action.payload);
-          });
-
+      if (!isExist)
         return {
           ...state,
-          favArr:[
-            ...state.favArr.filter((city) => {
-            return !(city.id == action.payload);
-            }
-          )]
+          favCity: [...state.favCity, action.payload],
         };
-    
+      else return state;
+
+    case CityListAction.DELETE_CARD:
+      let lastState = state.favCity.filter((city) => {
+        return !(city.id == action.payload);
+      });
+
+      return {
+        ...state,
+        favCity: [
+          ...state.favCity.filter((city) => {
+            return !(city.id == action.payload);
+          }),
+        ],
+      };
+
     default: {
       return state;
     }

@@ -1,62 +1,47 @@
-
-
 .weather-details-container{
-    width: 90vw;
-    margin:0 auto;
+  width: 90vw;
+  margin:0 auto;
 }
-
 .city-header{
-    display: grid;
-    grid-template-columns: 80px 300px;
-    gap:20px;
+  display: grid;
+  grid-template-columns: 80px 300px;
+  gap:20px;
 }
-
-
 .item2 ,.item3{
-    height: 50%;
+  height: 50%;
 }
-  mat-card-subtitle{
-    font-size: 20px;
-  }
-
-  .weather-header{
-    margin-top: 20px;
-    display: flex;
-   
+mat-card-subtitle{
+  font-size: 20px;
 }
-
+.weather-header{
+  margin-top: 20px;
+  display: flex;
+}
 .main-card {
-    flex:30%;
-  }
-  .favorite{
-    flex:70%;
-    text-align: right;
-  }
-
-
-  .fav-header{
-    font-size: 15px;
-  }
-
-  .card{
-    margin-top: 100px;
-    width: 10%;
-  }
-
-  .weather-body-container{
-    display: flex;
-    flex-direction: row;    
-    flex-wrap:wrap;
-  }
-  .card {
-    flex:10%;
-    margin-right:10px;
-    margin-bottom:10px;
-    width: 20em;
-
-  }
-  .card:nth-child(1){
-    margin-left:10px;
-
-  }
-
+  flex:30%;
+}
+.favorite{
+  flex:70%;
+  text-align: right;
+}
+.fav-header{
+  font-size: 15px;
+}
+.card{
+  margin-top: 100px;
+  width: 10%;
+}
+.weather-body-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+}
+.card {
+  flex:10%;
+  margin-right:10px;
+  margin-bottom:10px;
+  width: 20em;
+}
+.card:nth-child(1){
+  margin-left:10px;
+}

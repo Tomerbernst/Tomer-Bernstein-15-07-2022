@@ -13,14 +13,14 @@ import { AddToFavService } from './add-to-favorites/add-to-favorites.service';
 })
 
 export class WeatherDetailsComponent implements OnInit {
-  cities: Observable<{ cities: CityWeather[], favArr:CityWeather[] }>;
+  cities: Observable<{ cities: CityWeather[], favCity:CityWeather[] }>;
   isCels$ = new Subject<boolean>();
 
   constructor(
     private favService: AddToFavService,
     private head: HeaderService,
     private cityList: AutocompleteService, 
-    private store: Store<{ cityMap: { cities: CityWeather[], favArr:CityWeather[]} }> ) { }
+    private store: Store<{ cityMap: { cities: CityWeather[], favCity:CityWeather[]} }> ) { }
 
   ngOnInit(): void {
     this.cities = this.store.select("cityMap");

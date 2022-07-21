@@ -1,45 +1,40 @@
-import { Component, OnInit } from '@angular/core';
-import { AutocompleteService } from './autocomplete.service';
+import { Component, OnInit } from "@angular/core";
+import { AutocompleteService } from "./autocomplete.service";
 import { debounceTime } from "rxjs/operators";
-import { CityListItem } from '../core/city-list-item';
+import { CityListItem } from "../core/city-list-item";
 
 @Component({
-  selector: 'app-autocomplete',
-  templateUrl: './autocomplete.component.html',
-  styleUrls: ['./autocomplete.component.scss']
-
+  selector: "app-autocomplete",
+  templateUrl: "./autocomplete.component.html",
+  styleUrls: ["./autocomplete.component.scss"],
 })
 export class AutocompleteComponent implements OnInit {
   options: CityListItem[] = [];
   currValue: string;
-  constructor(private cityList: AutocompleteService) {   }
+  constructor(private acService: AutocompleteService) {}
 
   ngOnInit(): void {
-     if(!this.cityList.isInit)
-      this.cityList.getciiesInit();
-      this.cityList.isInit = true;
-      
+    if (!this.acService.isInit) this.acService.initCities();
+    this.acService.isInit = true;
   }
-  
-  getData(str:string) {
-    this.options=[];
-    if(str.length > 0) {
-      this.cityList.getCity(str)
-      .pipe(debounceTime(1000))
-      .subscribe((res) => {
-          res.forEach(element => {
-            this.options.push(new CityListItem(element.Key,element.LocalizedName));
+
+  getData(str: string) {
+    this.options = [];
+    if (str.length > 0) {
+      this.acService
+        .getCityByString(str)
+        .pipe(debounceTime(1000))
+        .subscribe((res) => {
+          res.forEach((element) => {
+            this.options.push(
+              new CityListItem(element.Key, element.LocalizedName)
+            );
           });
-      });
+        });
     }
-    
   }
 
-  getCityService(id:number,name:string){
-    this.cityList.getciies(id,name);
-
+  changeCity(id: number, name: string) {
+    this.acService.setCities(id, name);
   }
-
-
-
 }

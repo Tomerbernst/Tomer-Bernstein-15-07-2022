@@ -1,21 +1,19 @@
 <form class="autocomplete-form">
-  <mat-form-field class="example-full-width" appearance="fill">
-    <input type="text"
-        placeholder="Pick one"
-        aria-label="Number"
-        matInput
-        [matAutocomplete]="auto" 
-        [(ngModel)]="currValue"  
-        name="something"
-        (input)="getData(myInput.value)"
-        #myInput
-        >
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" >
-      <mat-option *ngFor="let option of options" [value]="option.name" (onSelectionChange)="getCityService(option.id,option.name)">
+  <mat-form-field class="autocomplete-field" appearance="fill">
+     <input type="text"
+     placeholder="Please type a city"
+     aria-label="Number"
+     matInput
+     [matAutocomplete]="auto" 
+     [(ngModel)]="currValue"  
+     name="autocomplete"
+     (input)="getData(autocomplete.value)"
+     #autocomplete
+     >
+     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" >
+        <mat-option *ngFor="let option of options" [value]="option.name" (onSelectionChange)="changeCity(option.id,option.name)">
         {{option.name}}
-      </mat-option>
-  </mat-autocomplete>
- </mat-form-field>
+        </mat-option>
+     </mat-autocomplete>
+  </mat-form-field>
 </form>
-
-

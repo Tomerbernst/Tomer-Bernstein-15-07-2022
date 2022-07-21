@@ -2,29 +2,30 @@
 <app-autocomplete></app-autocomplete>
 <div class="weather-details-container">
    <div class="weather-header" *ngFor="let city of (cities | async).cities ;let i = index; let first = first">
-    
       <mat-card class="main-card" *ngIf="first">
-        <mat-card-title-group>
-          <mat-card-title>{{city.name}}</mat-card-title>
-          <mat-card-subtitle *ngIf="isCels$ | async">{{city.temperature}}</mat-card-subtitle><!--farentheit-->
-      <mat-card-subtitle *ngIf="!(isCels$ | async)" >{{((city.temperature - 32)*5)/9 | round}}</mat-card-subtitle><!--celcius-->
-          <img class="card-img" src="https://www.accuweather.com/images/weathericons/{{city.weatherIcon}}.svg" height="80">
-        </mat-card-title-group>
+         <mat-card-title-group>
+            <mat-card-title>{{city.name}}</mat-card-title>
+            <mat-card-subtitle *ngIf="isCels$ | async">{{city.temperature}}</mat-card-subtitle>
+            <!--farentheit-->
+            <mat-card-subtitle *ngIf="!(isCels$ | async)" >{{((city.temperature - 32)*5)/9 | round}}</mat-card-subtitle>
+            <!--celcius-->
+            <img class="card-img" src="https://www.accuweather.com/images/weathericons/{{city.weatherIcon}}.svg" height="80">
+         </mat-card-title-group>
       </mat-card>
-    <div class="favorite" *ngIf="first">
-      <app-add-to-favorites></app-add-to-favorites>
-    </div>
-
-  </div> 
+      <div class="favorite" *ngIf="first">
+         <app-add-to-favorites></app-add-to-favorites>
+      </div>
+   </div>
    <div class="weather-body-container">
-      <mat-card class="card" *ngFor="let five of (cities | async).cities | slice:1">
-      <mat-card-title-group>
-      <mat-card-title>{{five.name}}</mat-card-title>
-      <mat-card-subtitle *ngIf="isCels$ | async" >{{five.temperature}}</mat-card-subtitle><!--farentheit-->
-      <mat-card-subtitle *ngIf="!(isCels$ | async)" >{{((five.temperature - 32)*5)/9 | round}}</mat-card-subtitle><!--celcius-->
-      <img class="item1" src="https://www.accuweather.com/images/weathericons/{{five.weatherIcon}}.svg" height="80">
-    </mat-card-title-group>
-  </mat-card>
-</div> 
-    
+      <mat-card class="card" *ngFor="let city of (cities | async).cities | slice:1">
+         <mat-card-title-group>
+            <mat-card-title>{{city.name}}</mat-card-title>
+            <mat-card-subtitle *ngIf="isCels$ | async" >{{city.temperature}}</mat-card-subtitle>
+            <!--farentheit-->
+            <mat-card-subtitle *ngIf="!(isCels$ | async)" >{{((city.temperature - 32)*5)/9 | round}}</mat-card-subtitle>
+            <!--celcius-->
+            <img class="item1" src="https://www.accuweather.com/images/weathericons/{{city.weatherIcon}}.svg" height="80">
+         </mat-card-title-group>
+      </mat-card>
+   </div>
 </div>
